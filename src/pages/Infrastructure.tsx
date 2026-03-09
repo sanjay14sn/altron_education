@@ -1,5 +1,4 @@
 import PageHero from '../components/PageHero';
-import { Monitor, BookOpen, FlaskConical } from 'lucide-react';
 
 const facilities = [
     {

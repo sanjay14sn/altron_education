@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PageHero from '../components/PageHero';
-import { CheckCircle, TrendingUp, Users, Shield, MapPin, Send } from 'lucide-react';
+import { CheckCircle, TrendingUp, Users, Shield, Send } from 'lucide-react';
 
 const benefits = [
     { icon: Shield, title: 'Exclusive Territory Rights', desc: 'Get exclusive rights to operate in your assigned territory with no competing Altron centers.' },

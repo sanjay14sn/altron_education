@@ -1,5 +1,5 @@
 import PageHero from '../components/PageHero';
-import { TrendingUp, Shield, Globe, Zap } from 'lucide-react';
+import { TrendingUp, Globe, Zap } from 'lucide-react';
 
 const sectors = [
     { name: 'Banking & Finance', desc: 'ATMs, vaults, and banking halls require sophisticated CCTV and access control.', trend: '↑ 45% growth', icon: '🏦' },

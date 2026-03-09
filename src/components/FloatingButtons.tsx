@@ -1,6 +1,5 @@
 import { Phone, MessageCircle, X } from 'lucide-react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 export default function FloatingButtons() {
     const [showContact, setShowContact] = useState(false);
