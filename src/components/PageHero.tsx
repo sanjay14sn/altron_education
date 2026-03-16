@@ -10,14 +10,26 @@ interface PageHeroProps {
 
 export default function PageHero({ title, subtitle, breadcrumbs = [], image }: PageHeroProps) {
     return (
-        <div className="relative pt-32 pb-16 overflow-hidden">
+        <div className="relative pt-10 pb-10 overflow-hidden">
             {/* Background */}
             {image ? (
                 <>
-                    <div
-                        className="absolute inset-0 bg-cover bg-center transition-transform duration-700"
-                        style={{ backgroundImage: `url(${image})` }}
-                    />
+                    {image.match(/\.(mp4|webm|ogg)$/) || image.includes('/video/upload/') ? (
+                        <video
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
+                        >
+                            <source src={image} type="video/mp4" />
+                        </video>
+                    ) : (
+                        <div
+                            className="absolute inset-0 bg-cover bg-center transition-transform duration-700"
+                            style={{ backgroundImage: `url(${image})` }}
+                        />
+                    )}
                     <div className="absolute inset-0 bg-brand-950/70 backdrop-blur-[2px]" />
                 </>
             ) : (

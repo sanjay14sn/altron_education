@@ -1,5 +1,6 @@
 import PageHero from '../components/PageHero';
-import { Shield, BookOpen, Users, Lightbulb, CheckCircle } from 'lucide-react';
+import { Shield, BookOpen, Users, Lightbulb, CheckCircle, Home } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const objectives = [
     { icon: Lightbulb, title: 'Awareness Programs', desc: 'Creating public awareness about the importance of safety and security systems in modern infrastructure.' },
@@ -23,25 +24,39 @@ export default function AboutInstitute() {
     return (
         <div className="bg-gray-50 min-h-screen">
             {/* Header Section with Image Background */}
-            <div className="relative h-[60vh] flex items-center overflow-hidden">
-                <div
-                    className="absolute inset-0 z-0 bg-fixed bg-center bg-cover"
-                    style={{
-                        backgroundImage: 'url("https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&q=80")'
-                    }}
-                >
-                    {/* Darker Overlay to prevent "soil" mixing with text */}
-                    <div className="absolute inset-0 bg-slate-900/70" />
-                </div>
+            <section
+                className="relative h-[350px] flex items-center bg-center bg-cover"
+                style={{
+                    backgroundImage: `url('https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&q=80')`
+                }}
+            >
+                {/* Better Overlay (image visible) */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/70"></div>
 
-                <div className="relative z-10 w-full">
-                    <PageHero
-                        title="About Altron Academy"
-                        subtitle="Pioneering safety and security education since 2008 with international accreditation"
-                        breadcrumbs={['Academy', 'About Institute']}
-                    />
+                <div className="container mx-auto px-6 relative z-10 flex justify-between items-center">
+
+                    <motion.h1
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        className="text-5xl font-bold text-white uppercase tracking-tight"
+                    >
+                        About Altron Academy
+                    </motion.h1>
+
+                    <nav className="bg-black/40 backdrop-blur px-6 py-3 flex items-center gap-4 text-white rounded-sm border border-white/10">
+                        <span className="flex items-center gap-2 text-xs font-bold tracking-widest cursor-pointer hover:text-red-500 transition-colors">
+                            <Home size={14} className="text-red-500" /> HOME
+                        </span>
+
+                        <span className="text-white/30 text-[10px]">○</span>
+
+                        <span className="text-xs font-bold tracking-widest border-b border-red-600 pb-0.5">
+                            ACADEMY
+                        </span>
+                    </nav>
+
                 </div>
-            </div>
+            </section>
 
             {/* Main Content Area - White Background for Readability */}
             <div className="max-w-7xl mx-auto px-4 py-20 relative z-10">
@@ -68,7 +83,6 @@ export default function AboutInstitute() {
                     </div>
 
                     <div className="space-y-6">
-                        {/* International Recognition Card */}
                         <div className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
                             <div className="text-4xl mb-4 text-brand-500">🏆</div>
                             <h3 className="text-slate-900 font-bold text-2xl mb-3">International Recognition</h3>
@@ -77,7 +91,6 @@ export default function AboutInstitute() {
                             </p>
                         </div>
 
-                        {/* Stats Grid */}
                         <div className="grid grid-cols-3 gap-4">
                             {[
                                 { value: '2008', label: 'Founded' },
@@ -114,7 +127,6 @@ export default function AboutInstitute() {
 
                 {/* Activities Section */}
                 <div className="bg-slate-900 rounded-3xl p-10 lg:p-16 shadow-2xl relative overflow-hidden">
-                    {/* Decorative Background Element */}
                     <div className="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl"></div>
 
                     <div className="relative z-10">
@@ -132,6 +144,7 @@ export default function AboutInstitute() {
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     );

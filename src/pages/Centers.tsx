@@ -1,5 +1,5 @@
+import { MapPin, Phone, Clock, Mail, ExternalLink, Globe, UserCheck } from 'lucide-react';
 import PageHero from '../components/PageHero';
-import { MapPin, Phone, Clock, Mail } from 'lucide-react';
 
 const centers = [
     {
@@ -8,69 +8,113 @@ const centers = [
         phone: '+91 99624 56533',
         email: 'info@altroneducation.com',
         timing: 'Mon – Sat: 9:00 AM – 7:00 PM',
-        type: 'Head Office',
-        color: 'border-brand-500/30',
-        glow: 'from-brand-900/20',
-        mapLink: 'https://maps.google.com/?q=Arumbakkam+Chennai',
+        type: 'Corporate Headquarters',
+        mapLink: 'https://maps.google.com/?q=Altron+Academy+Arumbakkam',
     },
+
     {
-        name: 'Chennai — Kundrathur',
-        address: 'Kundrathur, Chennai, Tamil Nadu – 600069',
-        phone: '+91 99624 56533',
-        email: 'kundrathur@altroneducation.com',
-        timing: 'Mon – Sat: 9:00 AM – 6:00 PM',
-        type: 'Training Center',
-        color: 'border-brand-500/30',
-        glow: 'from-brand-900/20',
-        mapLink: 'https://maps.google.com/?q=Kundrathur+Chennai',
+        name: 'Thanjavur Regional Center',
+        address: '#3C, Thiruvallur Nagar 4th Street, New Bus Stand, Thanjavur – 613 005',
+        phone: '98410 12721',
+        mobile: '88833 38414',
+        contactPerson: 'Ms. Thilaga / Mrs. Mayuri Thangadurai',
+        email: 'tnj@altroneducation.com',
+        timing: 'Mon – Sat: 9:30 AM – 6:00 PM',
+        type: 'Regional Center',
+        mapLink: 'https://maps.google.com/?q=New+Bus+Stand+Thanjavur',
     },
 ];
 
 export default function Centers() {
     return (
-        <div>
+        <div className="bg-gray-50 min-h-screen text-gray-800">
             <PageHero
-                title="Our Centers"
-                subtitle="Visit us at any of our training centers across Chennai for enrollment and inquiries"
+                title="Our Training Centers"
+                subtitle="Expert security engineering training at a location convenient for you."
                 breadcrumbs={['Centers']}
             />
-            <div className="max-w-7xl mx-auto px-4 py-20">
-                {/* Center Cards */}
-                <div className="grid md:grid-cols-2 gap-8 mb-20">
+
+            <div className="max-w-7xl mx-auto px-4 py-16 md:py-24">
+
+                {/* Section Header */}
+                <div className="text-center mb-16">
+                    <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4">
+                        Visit <span className="text-red-600">Altron Academy</span>
+                    </h2>
+                    <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+                        Our centers are equipped with state-of-the-art labs for CCTV, Fire Alarm, and Integrated Security System training.
+                    </p>
+                    <div className="w-24 h-1.5 bg-red-600 mx-auto mt-6 rounded-full"></div>
+                </div>
+
+                {/* Centers Grid */}
+                <div className="grid lg:grid-cols-2 gap-10 mb-24">
                     {centers.map((center, i) => (
-                        <div key={i} className={`glass rounded-2xl overflow-hidden border ${center.color}`}>
-                            <div className={`h-1 bg-gradient-to-r from-brand-500 to-brand-500`} />
-                            <div className="p-8">
-                                <div className="flex items-start justify-between mb-5">
-                                    <h2 className="text-white font-bold text-xl leading-tight">{center.name}</h2>
-                                    <span className="ml-3 bg-brand-500/10 text-brand-400 text-xs px-3 py-1 rounded-full border border-brand-500/20 flex-shrink-0">
+                        <div
+                            key={i}
+                            className="group bg-white border border-gray-200 rounded-3xl transition-all duration-300 hover:shadow-2xl hover:border-red-200 overflow-hidden flex flex-col"
+                        >
+                            <div className="p-8 md:p-10">
+                                <div className="flex justify-between items-start mb-6">
+                                    <div className="bg-red-50 p-3 rounded-2xl">
+                                        <MapPin className="w-7 h-7 text-red-600" />
+                                    </div>
+                                    <span className="text-xs font-bold uppercase tracking-widest text-red-600 bg-red-50 px-4 py-1.5 rounded-full border border-red-100">
                                         {center.type}
                                     </span>
                                 </div>
-                                <div className="space-y-4">
-                                    <div className="flex items-start gap-3">
-                                        <MapPin className="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0" />
-                                        <span className="text-gray-300 text-sm leading-relaxed">{center.address}</span>
+
+                                <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors">
+                                    {center.name}
+                                </h3>
+
+                                {center.contactPerson && (
+                                    <div className="flex items-center gap-2 mb-6 text-sm font-semibold text-gray-700 bg-gray-50 p-3 rounded-xl border border-gray-100">
+                                        <UserCheck className="w-4 h-4 text-red-600" />
+                                        <span>{center.contactPerson}</span>
                                     </div>
-                                    <div className="flex items-center gap-3">
-                                        <Phone className="w-4 h-4 text-brand-500 flex-shrink-0" />
-                                        <a href={`tel:${center.phone}`} className="text-gray-300 hover:text-brand-500 text-sm transition-colors">{center.phone}</a>
+                                )}
+
+                                <div className="space-y-6 text-gray-600 mb-8">
+                                    <div className="flex items-start gap-4">
+                                        <Globe className="w-5 h-5 text-red-600 mt-1 flex-shrink-0" />
+                                        <p className="text-sm leading-relaxed font-medium">{center.address}</p>
                                     </div>
-                                    <div className="flex items-center gap-3">
-                                        <Mail className="w-4 h-4 text-brand-500 flex-shrink-0" />
-                                        <a href={`mailto:${center.email}`} className="text-gray-300 hover:text-brand-500 text-sm transition-colors">{center.email}</a>
+
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                        <div className="flex items-start gap-4">
+                                            <Phone className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" />
+                                            <div>
+                                                <a href={`tel:${center.phone}`} className="block text-gray-900 font-bold hover:text-red-600 transition-colors">{center.phone}</a>
+                                                {center.mobile && <a href={`tel:${center.mobile}`} className="text-xs font-medium text-gray-500 underline decoration-red-200 uppercase tracking-tighter">M: {center.mobile}</a>}
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center gap-4">
+                                            <Clock className="w-5 h-5 text-red-600 flex-shrink-0" />
+                                            <span className="text-sm font-medium">{center.timing}</span>
+                                        </div>
                                     </div>
-                                    <div className="flex items-center gap-3">
-                                        <Clock className="w-4 h-4 text-brand-500 flex-shrink-0" />
-                                        <span className="text-gray-300 text-sm">{center.timing}</span>
+
+                                    <div className="flex items-center gap-4">
+                                        <Mail className="w-5 h-5 text-red-600 flex-shrink-0" />
+                                        <a href={`mailto:${center.email}`} className="text-sm font-medium hover:text-red-600 transition-colors">{center.email}</a>
                                     </div>
                                 </div>
-                                <div className="mt-6 flex gap-3">
-                                    <a href={center.mapLink} target="_blank" rel="noopener noreferrer" className="btn-primary flex-1 text-center text-sm py-2.5">
-                                        📍 Get Directions
+
+                                <div className="mt-auto pt-4 flex flex-col sm:flex-row gap-4">
+                                    <a
+                                        href={center.mapLink}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex-1 inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-red-200 active:scale-95"
+                                    >
+                                        Get Directions <ExternalLink className="w-4 h-4" />
                                     </a>
-                                    <a href={`tel:${center.phone}`} className="btn-secondary flex-1 text-center text-sm py-2.5">
-                                        📞 Call Center
+                                    <a
+                                        href={`tel:${center.mobile || center.phone}`}
+                                        className="flex-1 inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-900 font-bold py-4 rounded-xl border-2 border-gray-100 transition-all active:scale-95"
+                                    >
+                                        Call Office
                                     </a>
                                 </div>
                             </div>
@@ -78,36 +122,32 @@ export default function Centers() {
                     ))}
                 </div>
 
-                {/* Map Embed Placeholder */}
-                <div className="mb-16">
-                    <div className="text-center mb-8">
-                        <h2 className="text-2xl font-bold text-white">Find Us on the Map</h2>
-                    </div>
-                    <div className="glass rounded-2xl overflow-hidden border border-white/10 h-80 flex items-center justify-center bg-brand-800">
-                        <div className="text-center">
-                            <div className="text-5xl mb-4">📍</div>
-                            <p className="text-gray-400 mb-4">Interactive map coming soon</p>
-                            <a
-                                href="https://maps.google.com/?q=Arumbakkam+Chennai"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="btn-primary text-sm"
-                            >
-                                Open in Google Maps
+                {/* Franchise / Partnership Section */}
+                <div className="bg-white border-2 border-red-100 rounded-[2.5rem] p-8 md:p-16 relative overflow-hidden shadow-xl shadow-red-50">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-red-50 rounded-full -mr-32 -mt-32 opacity-50" />
+                    <div className="absolute bottom-0 left-0 w-32 h-32 bg-red-50 rounded-full -ml-16 -mb-16 opacity-50" />
+
+                    <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <div className="inline-flex items-center justify-center w-16 h-16 bg-red-600 rounded-2xl text-white text-3xl mb-6 shadow-xl shadow-red-200">
+                                🤝
+                            </div>
+                            <h3 className="text-3xl font-extrabold text-gray-900 mb-4">Partner with Altron</h3>
+                            <p className="text-gray-600 text-lg leading-relaxed mb-0">
+                                Grow your business by becoming an authorized training partner. We offer complete technical support, curriculum, and global certification pathways.
+                            </p>
+                        </div>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-end">
+                            <a href="/become-franchise" className="px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl transition-all text-center">
+                                Apply for Franchise
+                            </a>
+                            <a href="https://wa.me/919962456533" className="px-8 py-4 bg-gray-900 hover:bg-black text-white font-bold rounded-xl transition-all text-center">
+                                WhatsApp Inquiry
                             </a>
                         </div>
                     </div>
                 </div>
 
-                {/* Franchise */}
-                <div className="glass rounded-2xl p-8 border border-brand-200 text-center">
-                    <div className="text-4xl mb-4">🤝</div>
-                    <h3 className="text-white font-bold text-2xl mb-3">Become a Franchise Partner</h3>
-                    <p className="text-gray-400 max-w-xl mx-auto mb-6">
-                        Interested in opening an Altron Academy center in your city? Join our growing franchise network and bring world-class security training to your region.
-                    </p>
-                    <a href="/become-franchise" className="btn-amber inline-block">Apply for Franchise</a>
-                </div>
             </div>
         </div>
     );

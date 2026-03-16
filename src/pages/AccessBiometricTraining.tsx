@@ -27,11 +27,29 @@ const curriculum = [
 export default function AccessBiometricTraining() {
     return (
         <div>
-            <PageHero
-                title="Access Control & Biometrics"
+            {/* <PageHero
+                title="Access  & Biometrics"
                 subtitle="Master the latest biometric and access control technologies for high-security environments"
                 breadcrumbs={['Courses', 'Access & Biometrics']}
-            />
+            /> */}
+
+            <section
+                className="relative h-[300px] flex items-center justify-center bg-fixed bg-center bg-cover"
+                style={{
+                    backgroundImage:
+                        "url('https://res.cloudinary.com/dq6gr5zjc/image/upload/v1773658955/biometric-access-control-systems_chdurf.jpg')",
+                }}
+            >
+                <div className="absolute inset-0 bg-black/70"></div>
+
+                <div className="relative z-10 text-center px-4">
+                    <h1 className="text-5xl font-bold text-white mb-4">
+                        Access & Biometric Installation Training
+                    </h1>
+                </div>
+            </section>
+
+
             <div className="max-w-7xl mx-auto px-4 py-20">
                 {/* Technologies */}
                 <div className="mb-16">

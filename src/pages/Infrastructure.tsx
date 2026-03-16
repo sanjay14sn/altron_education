@@ -32,7 +32,7 @@ export default function Infrastructure() {
 
             {/* Header Section */}
             <section
-                className="relative h-[500px] flex items-center bg-center bg-cover"
+                className="relative h-[350px] flex items-center bg-center bg-cover"
                 style={{
                     backgroundImage: `url('https://res.cloudinary.com/dq6gr5zjc/image/upload/v1773059569/ChatGPT_Image_Mar_9_2026_06_01_00_PM_bqqwpu.png')`
                 }}

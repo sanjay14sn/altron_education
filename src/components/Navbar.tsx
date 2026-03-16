@@ -55,7 +55,7 @@ export default function Navbar() {
     }, [location])
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-100 shadow-sm">
+        <nav className="sticky top-0 z-50 bg-white border-b border-slate-100 shadow-sm">
 
             {/* Top Utility */}
             <div className="hidden lg:block bg-slate-50 border-b border-slate-100">

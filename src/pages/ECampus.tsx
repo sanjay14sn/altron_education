@@ -15,7 +15,7 @@ export default function ECampus() {
 
             {/* HEADER */}
             <section
-                className="relative h-[420px] flex items-center justify-center bg-fixed bg-center bg-cover"
+                className="relative h-[300px] flex items-center justify-center bg-fixed bg-center bg-cover"
                 style={{
                     backgroundImage:
                         "url('https://res.cloudinary.com/dq6gr5zjc/image/upload/v1773117512/ChatGPT_Image_Mar_10_2026_10_07_06_AM_tw4ey5.png')",
