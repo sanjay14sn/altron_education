@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PageHero from '../components/PageHero';
-import { Search, Shield, CheckCircle, XCircle } from 'lucide-react';
+import { Search, Shield, CheckCircle, XCircle, RotateCcw, Award, FileCheck, User, Calendar, GraduationCap, Phone } from 'lucide-react';
 
 interface CertificateResult {
     rollNo: string;
@@ -12,7 +12,6 @@ interface CertificateResult {
     grade: string;
 }
 
-// Mock data for demonstration
 const mockData: Record<string, CertificateResult> = {
     'ALT2024001': {
         rollNo: 'ALT2024001',
@@ -41,107 +40,183 @@ export default function Authenticity() {
 
     const handleSearch = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (!rollNo.trim()) return;
+
         setLoading(true);
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        setResult(null);
+
+        await new Promise((resolve) => setTimeout(resolve, 800));
         const found = mockData[rollNo.trim().toUpperCase()];
         setResult(found || 'not-found');
         setLoading(false);
     };
 
+    const resetSearch = () => {
+        setRollNo('');
+        setResult(null);
+    };
+
     return (
-        <div>
+        <div className="min-h-screen bg-gray-50">
             <PageHero
                 title="Certificate Authenticity"
-                subtitle="Verify the genuineness of any Altron Academy certificate using the student's roll number"
+                subtitle="Verify Altron Academy student credentials via our secure verification portal."
                 breadcrumbs={['Authenticity']}
             />
-            <div className="max-w-4xl mx-auto px-4 py-20">
-                {/* Search */}
-                <div className="glass rounded-2xl p-8 border border-brand-500/20 mb-12">
-                    <div className="flex items-center gap-3 mb-6">
-                        <div className="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center">
-                            <Shield className="w-6 h-6 text-brand-500" />
-                        </div>
-                        <div>
-                            <h2 className="text-white font-bold text-xl">Certificate Verification System</h2>
-                            <p className="text-gray-400 text-sm">Enter the roll number printed on the certificate</p>
-                        </div>
-                    </div>
-                    <form onSubmit={handleSearch} className="flex gap-4">
-                        <div className="relative flex-1">
-                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
-                            <input
-                                type="text"
-                                value={rollNo}
-                                onChange={(e) => setRollNo(e.target.value)}
-                                placeholder="Enter Roll Number (e.g., ALT2024001)"
-                                className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 transition-colors"
-                                required
-                            />
-                        </div>
-                        <button type="submit" className="btn-primary px-8" disabled={loading}>
-                            {loading ? 'Verifying...' : 'Verify'}
-                        </button>
-                    </form>
-                    <p className="text-gray-500 text-xs mt-3">
-                        Try: ALT2024001 or ALT2023045 for demo results
-                    </p>
-                </div>
 
-                {/* Result */}
-                {result === 'not-found' && (
-                    <div className="glass rounded-2xl p-8 border border-red-500/30 text-center">
-                        <XCircle className="w-16 h-16 text-red-400 mx-auto mb-4" />
-                        <h3 className="text-white font-bold text-xl mb-2">Certificate Not Found</h3>
-                        <p className="text-gray-400">No certificate was found with roll number <strong className="text-red-400">{rollNo}</strong>. Please check the number and try again.</p>
-                    </div>
-                )}
-
-                {result && result !== 'not-found' && (
-                    <div className="glass rounded-2xl p-8 border border-green-500/30">
-                        <div className="flex items-center gap-3 mb-6">
-                            <CheckCircle className="w-8 h-8 text-green-400" />
+            <div className="max-w-5xl mx-auto px-4 py-12">
+                {/* Search Container */}
+                <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden mb-12">
+                    <div className="bg-red-600 p-6 md:p-8 text-white">
+                        <div className="flex items-center gap-4">
+                            <div className="bg-white/20 p-3 rounded-xl backdrop-blur-sm">
+                                <Shield className="w-8 h-8 text-white" />
+                            </div>
                             <div>
-                                <h3 className="text-white font-bold text-xl">Certificate Verified ✓</h3>
-                                <p className="text-green-400 text-sm">This is an authentic Altron Academy certificate</p>
+                                <h2 className="text-2xl font-bold">Verification System</h2>
+                                <p className="text-red-100 text-sm">Official database for credential validation</p>
                             </div>
                         </div>
-                        <div className="grid md:grid-cols-2 gap-4">
-                            {[
-                                { label: 'Roll Number', value: result.rollNo },
-                                { label: 'Student Name', value: result.studentName },
-                                { label: "Father's Name", value: result.fatherName },
-                                { label: 'Course', value: result.course },
-                                { label: 'Year of Passing', value: result.yearOfPassing },
-                                { label: 'CGPA', value: result.cgpa },
-                                { label: 'Grade', value: result.grade },
-                                { label: 'Certification', value: 'BSA-JAS-ANZ International' },
-                            ].map((field, i) => (
-                                <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-green-500/5 border border-green-500/20">
-                                    <div>
-                                        <div className="text-gray-500 text-xs">{field.label}</div>
-                                        <div className="text-white font-semibold text-sm mt-0.5">{field.value}</div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
                     </div>
-                )}
 
-                {/* Info */}
-                <div className="mt-12 grid md:grid-cols-2 gap-6">
-                    <div className="glass-card border border-brand-500/20">
-                        <div className="text-3xl mb-3">🔍</div>
-                        <h3 className="text-white font-semibold mb-2">For Employers</h3>
-                        <p className="text-gray-400 text-sm">Verify the authenticity of certificates presented by candidates before employment. Our verification system is available 24/7.</p>
-                    </div>
-                    <div className="glass-card border border-brand-500/20">
-                        <div className="text-3xl mb-3">📞</div>
-                        <h3 className="text-white font-semibold mb-2">Need Help?</h3>
-                        <p className="text-gray-400 text-sm">For manual verification or bulk certificate checking, call us at <a href="tel:+919962456533" className="text-brand-500 hover:text-brand-400">99624 56533</a></p>
+                    <div className="p-8 md:p-10">
+                        <form onSubmit={handleSearch} className="flex flex-col md:flex-row gap-4">
+                            <div className="relative flex-1">
+                                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                                <input
+                                    type="text"
+                                    value={rollNo}
+                                    onChange={(e) => setRollNo(e.target.value)}
+                                    placeholder="Enter Roll Number (e.g., ALT2024001)"
+                                    className="w-full bg-gray-50 border-2 border-gray-100 rounded-xl pl-12 pr-4 py-4 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-red-600 focus:bg-white transition-all"
+                                    required
+                                />
+                            </div>
+                            <button
+                                type="submit"
+                                className="bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-xl font-bold shadow-lg shadow-red-600/20 transition-all disabled:opacity-70 flex items-center justify-center gap-2"
+                                disabled={loading}
+                            >
+                                {loading ? 'Checking...' : 'Verify Certificate'}
+                            </button>
+                        </form>
+
+                        {result && (
+                            <button onClick={resetSearch} className="mt-4 flex items-center gap-2 text-sm text-gray-500 hover:text-red-600 transition-colors">
+                                <RotateCcw className="w-4 h-4" /> Reset Search
+                            </button>
+                        )}
                     </div>
                 </div>
+
+                {/* Result Section */}
+                <div className="min-h-[300px]">
+                    {loading && (
+                        <div className="flex flex-col items-center justify-center py-12">
+                            <div className="w-12 h-12 border-4 border-red-600/20 border-t-red-600 rounded-full animate-spin mb-4"></div>
+                            <p className="text-gray-500 font-medium">Querying Secure Database...</p>
+                        </div>
+                    )}
+
+                    {result === 'not-found' && !loading && (
+                        <div className="bg-white border-2 border-red-100 rounded-3xl p-10 text-center shadow-sm">
+                            <div className="w-20 h-20 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <XCircle className="w-12 h-12 text-red-600" />
+                            </div>
+                            <h3 className="text-gray-900 font-bold text-2xl mb-2">Record Not Found</h3>
+                            <p className="text-gray-600 max-w-md mx-auto mb-6">
+                                We couldn't find a certificate matching <span className="font-bold text-red-600">{rollNo}</span>. Please verify the number and try again.
+                            </p>
+                            <button onClick={resetSearch} className="text-red-600 font-semibold hover:underline">Try Again</button>
+                        </div>
+                    )}
+
+                    {result && result !== 'not-found' && !loading && (
+                        <div className="bg-white border-2 border-green-100 rounded-3xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
+                            {/* Verification Badge */}
+                            <div className="bg-green-50 p-6 flex flex-col md:flex-row items-center justify-between border-b border-green-100">
+                                <div className="flex items-center gap-4">
+                                    <div className="bg-green-600 p-2 rounded-full">
+                                        <CheckCircle className="w-6 h-6 text-white" />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-green-800 font-bold text-lg">Identity Verified</h3>
+                                        <p className="text-green-600 text-xs font-semibold tracking-wider uppercase">Authentic Altron Academy Graduate</p>
+                                    </div>
+                                </div>
+                                <div className="mt-4 md:mt-0 text-gray-400 text-xs font-mono">
+                                    REF: {result.rollNo}-{new Date().getFullYear()}
+                                </div>
+                            </div>
+
+                            {/* Info Grid */}
+                            <div className="p-8 md:p-12 relative">
+                                {/* Subtle Red Watermark */}
+                                <Award className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 text-red-600/[0.03] pointer-events-none" />
+
+                                <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 relative z-10">
+                                    <Detail icon={<User className="text-red-600" />} label="Student Full Name" value={result.studentName} />
+                                    <Detail icon={<FileCheck className="text-red-600" />} label="Certificate ID" value={result.rollNo} />
+                                    <Detail icon={<GraduationCap className="text-red-600" />} label="Course Title" value={result.course} />
+                                    <Detail icon={<Calendar className="text-red-600" />} label="Year of Completion" value={result.yearOfPassing} />
+
+                                    <div className="md:col-span-2 grid grid-cols-2 gap-4 mt-4">
+                                        <div className="bg-gray-50 p-5 rounded-2xl border border-gray-100">
+                                            <p className="text-gray-500 text-xs uppercase font-bold mb-1">Final CGPA</p>
+                                            <p className="text-3xl font-black text-gray-900">{result.cgpa}</p>
+                                        </div>
+                                        <div className="bg-gray-50 p-5 rounded-2xl border border-gray-100">
+                                            <p className="text-gray-500 text-xs uppercase font-bold mb-1">Grade</p>
+                                            <p className="text-3xl font-black text-red-600">{result.grade}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="mt-10 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-6">
+                                    <div className="text-gray-400 text-[11px] leading-relaxed max-w-sm">
+                                        *This digital verification serves as an official confirmation of the candidate's academic standing at Altron Academy. Accreditation: BSA-JAS-ANZ.
+                                    </div>
+                                    <div className="bg-white border-2 border-gray-900 px-6 py-2 rounded-lg font-bold text-gray-900 text-xs tracking-widest uppercase">
+                                        Official Record
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+
+                {/* Footer Help */}
+                <div className="mt-16 grid md:grid-cols-2 gap-6">
+                    <div className="bg-white p-8 rounded-2xl border border-gray-200 hover:border-red-600/30 transition-all shadow-sm">
+                        <h4 className="text-gray-900 font-bold mb-3 flex items-center gap-2">
+                            <Shield className="w-5 h-5 text-red-600" /> Employer Support
+                        </h4>
+                        <p className="text-gray-600 text-sm leading-relaxed">
+                            Need a formal verification letter or bulk verification for your HR department? We provide expedited services for corporate partners.
+                        </p>
+                    </div>
+                    <div className="bg-white p-8 rounded-2xl border border-gray-200 hover:border-red-600/30 transition-all shadow-sm">
+                        <h4 className="text-gray-900 font-bold mb-3 flex items-center gap-2">
+                            <Phone className="w-5 h-5 text-red-600" /> Manual Assistance
+                        </h4>
+                        <p className="text-gray-600 text-sm mb-4">If you face any issues during online verification, reach us at:</p>
+                        <a href="tel:+919962456533" className="text-xl font-bold text-red-600 hover:text-red-700 transition-colors">
+                            +91 99624 56533
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function Detail({ icon, label, value }: { icon: React.ReactNode, label: string, value: string }) {
+    return (
+        <div className="flex gap-4">
+            <div className="mt-1">{icon}</div>
+            <div>
+                <p className="text-gray-500 text-xs uppercase tracking-wider font-bold">{label}</p>
+                <p className="text-gray-900 font-bold text-lg">{value}</p>
             </div>
         </div>
     );

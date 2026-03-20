@@ -25,11 +25,12 @@ const navItems: NavItem[] = [
             { label: 'Fire Alarm', path: '/fire-alarm-training', desc: 'Safety systems training' },
             { label: 'Access & Biometric', path: '/access-biometric-training', desc: 'Security protocols' },
             { label: 'Duration, Eligibility & Fees', path: '/fees-eligibility', desc: 'Course details' },
-            { label: 'Demand & Benefits of Course', path: '/world-scenario', desc: 'Industry insights' },
+            { label: 'Demand & Benefits of Course', path: '/demand-benefits', desc: 'Industry insights' },
             { label: 'Bank Details', path: '/bank-details', desc: 'Payment information' },
         ],
     },
     { label: 'Fees', path: '/fees-eligibility' },
+    { label: 'Authenticity', path: '/authenticity' },
     { label: 'e-Campus', path: '/e-campus' },
     {
         label: 'Gallery',
@@ -94,7 +95,7 @@ export default function Navbar() {
                             <img
                                 src="https://res.cloudinary.com/dq6gr5zjc/image/upload/v1773043568/altronaccodemy_pxgw2x.png"
                                 alt="Altron Academy"
-                                className="h-32 md:h-44 w-auto object-contain transform scale-125 mt-6 transition-transform"
+                                className="h-32 md:h-42 w-auto object-contain transform scale-125 mt-6 transition-transform"
                             />
                         </Link>
                     </div>

@@ -23,6 +23,7 @@ import Centers from './pages/Centers';
 import Contact from './pages/Contact';
 import FranchisePartner from './pages/FranchisePartner';
 import BankDetails from './pages/BankDetails';
+import DemandBenefits from './pages/DemandBenefits';
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
             <Route path="/bank-details" element={<BankDetails />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/become-franchise" element={<FranchisePartner />} />
+            <Route path="/demand-benefits" element={<DemandBenefits />} />
           </Routes>
         </main>
         <Footer />

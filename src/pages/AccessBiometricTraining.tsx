@@ -1,11 +1,28 @@
-import { CheckCircle, Clock, Award, Fingerprint } from 'lucide-react';
+import React from 'react';
+import { CheckCircle, Clock, Award, Fingerprint, Shield, Users, Settings, Cpu } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const technologies = [
-    { icon: '🔑', title: 'Password Verification', desc: 'PIN-based access control systems for secure premises management. Learn to install, configure, and manage keypad and card-based entry systems.' },
-    { icon: '👁️', title: 'Eyeball Scanning', desc: 'Cutting-edge iris recognition technology for high-security environments. Training on installation and calibration of iris scanners.' },
-    { icon: '😊', title: 'Face Scanning', desc: 'AI-powered facial recognition systems for modern access control. Learn to set up and integrate face detection cameras into security systems.' },
-    { icon: '🖐️', title: 'Fingerprint Biometrics', desc: 'Industry-standard fingerprint scanning devices for attendance and access. Complete training on enrollment, verification, and troubleshooting.' },
+    {
+        icon: <Shield className="w-8 h-8 text-blue-400" />,
+        title: 'Password Verification',
+        desc: 'Master PIN-based access control systems. Learn to install, configure, and manage keypad and card-based entry systems for secure premises management.'
+    },
+    {
+        icon: <Cpu className="w-8 h-8 text-purple-400" />,
+        title: 'Eyeball & Iris Scanning',
+        desc: 'Dive into cutting-edge iris recognition technology. Practical training on the installation and precise calibration of iris scanners for high-security zones.'
+    },
+    {
+        icon: <Users className="w-8 h-8 text-green-400" />,
+        title: 'Face Recognition AI',
+        desc: 'Implement AI-powered facial recognition. Learn to set up and integrate sophisticated face detection cameras into existing security infrastructures.'
+    },
+    {
+        icon: <Fingerprint className="w-8 h-8 text-brand-500" />,
+        title: 'Fingerprint Biometrics',
+        desc: 'The industry standard for attendance. Complete training on enrollment, data verification, and hardware troubleshooting for biometric devices.'
+    },
 ];
 
 const curriculum = [
@@ -25,36 +42,77 @@ const curriculum = [
 
 export default function AccessBiometricTraining() {
     return (
-        <div>
-
-
+        <div className="bg-[#0a0a0a] min-h-screen font-sans text-gray-200">
+            {/* Hero Section */}
             <section
-                className="relative h-[300px] flex items-center justify-center bg-fixed bg-center bg-cover"
+                className="relative h-[450px] flex items-center justify-center bg-fixed bg-center bg-cover"
                 style={{
-                    backgroundImage:
-                        "url('https://res.cloudinary.com/dq6gr5zjc/image/upload/v1773658955/biometric-access-control-systems_chdurf.jpg')",
+                    backgroundImage: "url('https://res.cloudinary.com/dq6gr5zjc/image/upload/v1773658955/biometric-access-control-systems_chdurf.jpg')",
                 }}
             >
-                <div className="absolute inset-0 bg-black/70"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-[#0a0a0a]"></div>
 
-                <div className="relative z-10 text-center px-4">
-                    <h1 className="text-5xl font-bold text-white mb-4">
-                        Access & Biometric Installation Training
+                <div className="relative z-10 text-center max-w-4xl px-4">
+                    <span className="text-brand-500 font-bold tracking-widest uppercase text-sm mb-4 block">Professional Certification</span>
+                    <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
+                        Access & Biometric <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-600">
+                            Installation Training
+                        </span>
                     </h1>
+                    <p className="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed">
+                        Master the world's most advanced security protocols. From fingerprint verification to
+                        AI face scanning, gain the technical expertise to secure sensitive environments.
+                    </p>
                 </div>
             </section>
 
-
-            <div className="max-w-7xl mx-auto px-4 py-20">
-                {/* Technologies */}
-                <div className="mb-16">
-                    <div className="text-center mb-10">
-                        <h2 className="text-3xl font-bold text-white">Technologies You'll Master</h2>
+            <div className="max-w-7xl mx-auto px-4 py-16">
+                {/* Intro Content */}
+                <div className="grid lg:grid-cols-2 gap-12 items-center mb-24">
+                    <div>
+                        <h2 className="text-3xl font-bold text-white mb-6">Why Specialized Security Training?</h2>
+                        <p className="text-gray-400 mb-4 leading-relaxed">
+                            Access and Biometric control systems are critical for protecting confidential areas by ensuring only authorized individuals gain entry. While traditional systems rely on passwords and sensors, modern Biometric systems utilize unique physical identities—like thumbprints and iris patterns—offering the highest level of security.
+                        </p>
+                        <p className="text-gray-400 leading-relaxed">
+                            At <span className="text-brand-500 font-semibold">Altron Education</span>, we bridge the gap between theory and industry-standard application. With decades of experience, we provide the number one installation training in Chennai, preparing you for roles in hospitals, banks, and corporate data centers.
+                        </p>
                     </div>
-                    <div className="grid md:grid-cols-2 gap-6">
+                    <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
+                        <div className="grid grid-cols-2 gap-6">
+                            <div className="text-center p-4">
+                                <div className="text-brand-500 text-3xl font-bold mb-1">10+</div>
+                                <div className="text-gray-500 text-xs uppercase tracking-wider">Years Experience</div>
+                            </div>
+                            <div className="text-center p-4">
+                                <div className="text-brand-500 text-3xl font-bold mb-1">100%</div>
+                                <div className="text-gray-500 text-xs uppercase tracking-wider">Practical Lab</div>
+                            </div>
+                            <div className="text-center p-4">
+                                <div className="text-brand-500 text-3xl font-bold mb-1">JAS-ANZ</div>
+                                <div className="text-gray-500 text-xs uppercase tracking-wider">Certified</div>
+                            </div>
+                            <div className="text-center p-4">
+                                <div className="text-brand-500 text-3xl font-bold mb-1">24/7</div>
+                                <div className="text-gray-500 text-xs uppercase tracking-wider">Support</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Technologies Grid */}
+                <div className="mb-24">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl font-bold text-white mb-4">Technologies You'll Master</h2>
+                        <div className="h-1 w-20 bg-brand-500 mx-auto"></div>
+                    </div>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {technologies.map((tech, i) => (
-                            <div key={i} className="glass-card border border-brand-500/20 hover-lift">
-                                <div className="text-4xl mb-4">{tech.icon}</div>
+                            <div key={i} className="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-brand-500/50 transition-all duration-300 group">
+                                <div className="mb-6 transform group-hover:scale-110 transition-transform">
+                                    {tech.icon}
+                                </div>
                                 <h3 className="text-white font-bold text-xl mb-3">{tech.title}</h3>
                                 <p className="text-gray-400 text-sm leading-relaxed">{tech.desc}</p>
                             </div>
@@ -62,48 +120,65 @@ export default function AccessBiometricTraining() {
                     </div>
                 </div>
 
-                {/* Course Details */}
-                <div className="grid lg:grid-cols-3 gap-8">
+                {/* Curriculum & Sidebar */}
+                <div className="grid lg:grid-cols-3 gap-12">
                     <div className="lg:col-span-2">
-                        <h2 className="text-2xl font-bold text-white mb-6">Curriculum</h2>
-                        <div className="grid md:grid-cols-2 gap-3">
+                        <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+                            <Settings className="text-brand-500" />
+                            Comprehensive Curriculum
+                        </h2>
+                        <div className="grid md:grid-cols-2 gap-4">
                             {curriculum.map((item, i) => (
-                                <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-white/3 border border-white/5 hover:bg-white/5 transition-colors">
-                                    <div className="w-6 h-6 rounded-full bg-brand-500/20 flex items-center justify-center text-brand-500 text-xs font-bold flex-shrink-0">
+                                <div key={i} className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:bg-brand-500/5 transition-colors group">
+                                    <div className="w-8 h-8 rounded-lg bg-brand-500/10 flex items-center justify-center text-brand-500 text-sm font-bold flex-shrink-0 group-hover:bg-brand-500 group-hover:text-white transition-all">
                                         {i + 1}
                                     </div>
-                                    <span className="text-gray-300 text-sm">{item}</span>
+                                    <span className="text-gray-300 text-sm font-medium">{item}</span>
                                 </div>
                             ))}
                         </div>
                     </div>
 
                     <div className="space-y-6">
-                        <div className="glass rounded-2xl p-6 border border-brand-500/20">
-                            <h3 className="text-white font-bold text-lg mb-4">Course Details</h3>
-                            <div className="space-y-4">
-                                {[
-                                    { label: 'Duration', value: '1 Month', icon: Clock },
-                                    { label: 'Eligibility', value: 'SSLC / HSC / Diploma / Degree', icon: CheckCircle },
-                                    { label: 'Certification', value: 'BSA-JAS-ANZ International', icon: Award },
-                                ].map((detail, i) => (
-                                    <div key={i} className="flex items-start gap-3">
-                                        <detail.icon className="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0" />
-                                        <div>
-                                            <div className="text-gray-500 text-xs">{detail.label}</div>
-                                            <div className="text-white text-sm font-medium">{detail.value}</div>
+                        <div className="sticky top-24">
+                            <div className="bg-gradient-to-br from-gray-900 to-black rounded-3xl p-8 border border-brand-500/30 shadow-2xl shadow-brand-500/10">
+                                <h3 className="text-white font-bold text-xl mb-6">Course Overview</h3>
+                                <div className="space-y-6">
+                                    {[
+                                        { label: 'Duration', value: '1 Month Intensive', icon: Clock },
+                                        { label: 'Eligibility', value: 'SSLC / HSC / Diploma / Degree', icon: CheckCircle },
+                                        { label: 'Certification', value: 'BSA-JAS-ANZ International', icon: Award },
+                                    ].map((detail, i) => (
+                                        <div key={i} className="flex items-start gap-4">
+                                            <div className="p-2 rounded-lg bg-brand-500/10">
+                                                <detail.icon className="w-5 h-5 text-brand-500" />
+                                            </div>
+                                            <div>
+                                                <div className="text-gray-500 text-xs font-semibold uppercase tracking-wider">{detail.label}</div>
+                                                <div className="text-white text-base font-medium">{detail.value}</div>
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    ))}
+                                </div>
+
+                                <Link to="/contact" className="mt-8 w-full bg-brand-600 hover:bg-brand-500 text-white font-bold py-4 rounded-xl text-center block transition-all hover:shadow-lg hover:shadow-brand-500/20 active:scale-[0.98]">
+                                    Enquire for Next Batch
+                                </Link>
+
+                                <p className="text-center text-gray-500 text-xs mt-4">
+                                    Limited seats available for hands-on lab sessions.
+                                </p>
                             </div>
-                            <Link to="/contact" className="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3 rounded-xl w-full text-center block mt-6 transition-all">
-                                Enquire Now
-                            </Link>
-                        </div>
-                        <div className="glass-card border border-brand-500/20 text-center">
-                            <Fingerprint className="w-12 h-12 text-brand-500 mx-auto mb-3" />
-                            <p className="text-white font-semibold">Hands-On Lab Training</p>
-                            <p className="text-gray-400 text-sm mt-1">Train on real biometric devices used in the field</p>
+
+                            <div className="mt-6 p-6 rounded-3xl bg-brand-500/5 border border-brand-500/20 flex items-center gap-4">
+                                <div className="w-12 h-12 rounded-full bg-brand-500/20 flex items-center justify-center flex-shrink-0">
+                                    <Fingerprint className="w-6 h-6 text-brand-500" />
+                                </div>
+                                <div>
+                                    <p className="text-white font-bold text-sm">Hands-On Training</p>
+                                    <p className="text-gray-400 text-xs">Work with real RFID & Biometric hardware.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,10 +1,25 @@
 import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import {
+    ChevronLeft,
+    ChevronRight,
+    Menu,
+    X,
+    Star,
+    MessageSquare,
+    ShieldCheck,
+    Globe,
+    GraduationCap,
+    Settings,
+    Phone,
+    Mail,
+    User,
+    ArrowRight
+} from 'lucide-react';
 
 const SLIDES = [
     {
         id: 1,
-        image: "https://res.cloudinary.com/dq6gr5zjc/image/upload/v1773034527/ChatGPT_Image_Mar_9_2026_11_05_10_AM_t6b58i.png",
+        image: "https://res.cloudinary.com/dq6gr5zjc/image/upload/v1773990506/Securing_the_camera_cover_jnvpxt.png",
         title: "CCTV Camera",
         subtitle: "Installation Training",
         description: "Learn professional CCTV camera installation and start your career as a security system technician.",
@@ -26,23 +41,9 @@ const SLIDES = [
     {
         id: 4,
         image: "https://res.cloudinary.com/dq6gr5zjc/image/upload/v1773035991/ChatGPT_Image_Mar_9_2026_11_29_30_AM_c2lajo.png",
-        title: "Night Vision",
-        subtitle: "Ultra HD Clarity",
-        description: "See clearly in total darkness with our advanced thermal imaging technology.",
-    },
-    {
-        id: 5,
-        image: "https://res.cloudinary.com/dq6gr5zjc/image/upload/v1773035489/fire-alarm-system-1024x950_u8fsam.jpg",
-        title: "Night Vision",
-        subtitle: "Ultra HD Clarity",
-        description: "See clearly in total darkness with our advanced thermal imaging technology.",
-    },
-    {
-        id: 6,
-        image: "https://res.cloudinary.com/dq6gr5zjc/image/upload/v1773035489/fire-alarm-system-1024x950_u8fsam.jpg",
-        title: "Night Vision",
-        subtitle: "Ultra HD Clarity",
-        description: "See clearly in total darkness with our advanced thermal imaging technology.",
+        title: "Thermal AI",
+        subtitle: "Advanced Tracking",
+        description: "Industry leading movement detection with zero false alarms using neural networks.",
     }
 ];
 
@@ -52,12 +53,38 @@ const GALLERY_IMAGES = [
     "https://images.unsplash.com/photo-1590272456521-1bbe160a18ce?q=80&w=1470&auto=format&fit=crop"
 ];
 
-// Updated TESTIMONIALS with the provided YouTube links
 const TESTIMONIALS = [
-    { id: 1, videoUrl: "https://www.youtube.com/embed/IuTzmfI8PPA", title: "Altron Electronic Security Solution Provider like CCTV, Fire Alarm, Biometric, VDP, Home Automation" },
-    { id: 2, videoUrl: "https://www.youtube.com/embed/SNCFf6KhE-A", title: "Top 5 Reasons to Choose Altron Security Engineering" },
-    { id: 3, videoUrl: "https://www.youtube.com/embed/dQabYtFd-Qs", title: "Mastering Safety & Security: Altron Academy" },
-    { id: 4, videoUrl: "https://www.youtube.com/embed/uAFn0MB_5DE", title: "ALTROX World Class CCTV Surveillance Manufacturer" }
+    { id: 1, videoUrl: "https://www.youtube.com/embed/IuTzmfI8PPA", title: "Altron Electronic Security Solutions" },
+    { id: 2, videoUrl: "https://www.youtube.com/embed/SNCFf6KhE-A", title: "Top 5 Reasons to Choose Altron" },
+    { id: 3, videoUrl: "https://www.youtube.com/embed/dQabYtFd-Qs", title: "Mastering Safety: Altron Academy" },
+    { id: 4, videoUrl: "https://www.youtube.com/embed/uAFn0MB_5DE", title: "ALTROX Manufacturing Process" }
+];
+
+const GOOGLE_REVIEWS = [
+    {
+        id: 1,
+        author: "Rahul Sharma",
+        rating: 5,
+        date: "2 weeks ago",
+        text: "The CCTV installation training at Altron was top-notch. Very practical and hands-on. The instructors are industry experts.",
+        avatar: "RS"
+    },
+    {
+        id: 2,
+        author: "Priya Patel",
+        rating: 5,
+        date: "1 month ago",
+        text: "Excellent service for smart home automation. They integrated everything perfectly with my phone. Highly recommend!",
+        avatar: "PP"
+    },
+    {
+        id: 3,
+        author: "Vikram Singh",
+        rating: 5,
+        date: "3 months ago",
+        text: "Great experience learning about thermal imaging. The lab facilities are world-class. Best security institute in the region.",
+        avatar: "VS"
+    }
 ];
 
 export default function Home() {
@@ -66,7 +93,7 @@ export default function Home() {
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrent((prev) => (prev === SLIDES.length - 1 ? 0 : prev + 1));
-        }, 6000);
+        }, 7000); // Slightly longer for a more relaxed, premium feel
         return () => clearInterval(timer);
     }, []);
 
@@ -74,224 +101,315 @@ export default function Home() {
     const prevSlide = () => setCurrent(current === 0 ? SLIDES.length - 1 : current - 1);
 
     return (
-        <div className="min-h-screen font-sans selection:bg-[#BA442E]/30 overflow-x-hidden">
-            <section className="relative min-h-screen flex flex-col overflow-hidden">
+        <div className="min-h-screen font-sans bg-white text-gray-900 selection:bg-[#BA442E]/20 overflow-x-hidden antialiased">
+
+            {/* --- HERO SECTION --- */}
+            <section className="relative h-screen w-full flex flex-col justify-center overflow-hidden bg-black">
                 {SLIDES.map((slide, index) => (
                     <div
                         key={slide.id}
-                        className={`absolute inset-0 z-0 transition-opacity duration-1000 ease-in-out ${index === current ? "opacity-100" : "opacity-0"}`}
+                        className={`absolute inset-0 z-0 transition-all duration-1000 ease-in-out ${index === current ? "opacity-100 scale-100" : "opacity-0 scale-105"}`}
                     >
-                        <img src={slide.image} alt={slide.title} className="w-full h-full object-cover transform scale-105" />
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#1F1F1F]/95 via-[#1F1F1F]/60 to-transparent" />
+                        <img src={slide.image} alt={slide.title} className="w-full h-full object-cover" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent" />
                     </div>
                 ))}
 
-                <div className="relative z-20 flex-grow flex items-center">
-                    <div className="max-w-7xl mx-auto px-6 w-full">
-                        <div key={current} className="animate-in fade-in slide-in-from-bottom-8 duration-700 max-w-3xl">
-                            <h1 className="text-6xl md:text-8xl font-black text-white leading-[1.1] mb-6 tracking-tight">
-                                {SLIDES[current].title} <br />
-                                <span className="text-[#BA442E]">{SLIDES[current].subtitle}</span>
-                            </h1>
-                            <p className="text-gray-300 text-xl max-w-md mb-8 font-medium">{SLIDES[current].description}</p>
+                <div className="relative z-20 max-w-7xl mx-auto px-6 w-full pt-20">
+                    <div className="max-w-3xl transition-all duration-700 transform translate-y-0">
+                        <div className="overflow-hidden mb-4">
+                            <span className="inline-block text-[#BA442E] uppercase tracking-[0.3em] font-bold text-sm md:text-base">
+                                {SLIDES[current].subtitle}
+                            </span>
                         </div>
+                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[1.05] tracking-tighter mb-8">
+                            {SLIDES[current].title}
+                        </h1>
+                        <p className="text-gray-300 text-lg md:text-2xl font-light max-w-xl mb-12 leading-relaxed">
+                            {SLIDES[current].description}
+                        </p>
+                        <button className="group relative inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-[#BA442E] overflow-hidden rounded-none">
+                            <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-white rounded-full group-hover:w-72 group-hover:h-56 opacity-10"></span>
+                            <span className="relative flex items-center gap-3">
+                                Explore Courses <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                            </span>
+                        </button>
                     </div>
                 </div>
 
-                <div className="relative z-30 max-w-7xl mx-auto px-6 w-full pb-12 flex items-center gap-4">
-                    <button onClick={prevSlide} className="p-3 border border-white/20 rounded-full text-white hover:bg-[#BA442E] transition-colors">
-                        <ChevronLeft className="w-6 h-6" />
-                    </button>
-                    <button onClick={nextSlide} className="p-3 border border-white/20 rounded-full text-white hover:bg-[#BA442E] transition-colors">
-                        <ChevronRight className="w-6 h-6" />
-                    </button>
-                    <div className="flex gap-2 ml-4">
-                        {SLIDES.map((_, i) => (
-                            <div key={i} className={`h-1 transition-all duration-300 ${i === current ? "w-8 bg-[#BA442E]" : "w-4 bg-white/30"}`} />
+                {/* Refined Slider Controls */}
+                <div className="absolute bottom-12 left-0 right-0 z-30">
+                    <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+                        <div className="flex gap-3 items-center">
+                            {SLIDES.map((_, i) => (
+                                <button
+                                    key={i}
+                                    onClick={() => setCurrent(i)}
+                                    className={`h-[2px] transition-all duration-500 ease-in-out ${i === current ? "w-12 bg-[#BA442E]" : "w-6 bg-white/30 hover:bg-white/60"}`}
+                                    aria-label={`Go to slide ${i + 1}`}
+                                />
+                            ))}
+                        </div>
+                        <div className="flex gap-4">
+                            <button onClick={prevSlide} className="p-4 border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-300">
+                                <ChevronLeft className="w-5 h-5" />
+                            </button>
+                            <button onClick={nextSlide} className="p-4 border border-white/20 text-white hover:bg-[#BA442E] hover:border-[#BA442E] transition-all duration-300">
+                                <ChevronRight className="w-5 h-5" />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* --- ACADEMY HIGHLIGHT --- */}
+            <section className="py-24 md:py-32 bg-white relative">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+                        <div className="w-full lg:w-1/2 relative group">
+                            {/* Decorative background element */}
+                            <div className="absolute -inset-4 md:-inset-6 bg-gray-50 transform translate-x-4 translate-y-4 transition-transform duration-500 group-hover:translate-x-6 group-hover:translate-y-6"></div>
+                            <div className="relative overflow-hidden shadow-2xl">
+                                <img
+                                    src="https://res.cloudinary.com/dq6gr5zjc/image/upload/v1773990506/Securing_the_camera_cover_jnvpxt.png"
+                                    alt="Training Academy"
+                                    className="w-full h-[400px] md:h-[600px] object-cover transform transition-transform duration-1000 group-hover:scale-105"
+                                />
+                                <div className="absolute inset-0 border border-black/5 z-10"></div>
+                            </div>
+                        </div>
+                        <div className="w-full lg:w-1/2 flex flex-col items-start">
+                            <span className="text-[#b3433a] font-bold tracking-[0.3em] uppercase text-sm mb-4">The Academy</span>
+                            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-[1.1] tracking-tight mb-8">
+                                Altron Institute of Safety and Security Technologies.
+                            </h2>
+                            <p className="text-gray-500 text-lg md:text-xl leading-relaxed mb-10 font-light">
+                                We specialize in equipping the world with the expertise to utilize the latest technologies, ensuring profoundly safe and secure surveillance environments globally.
+                            </p>
+                            <button className="group flex items-center gap-4 text-gray-900 font-bold hover:text-[#b3433a] transition-colors pb-2 border-b-2 border-transparent hover:border-[#b3433a]">
+                                Discover Our Heritage <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* --- E-CAMPUS ECOSYSTEM --- */}
+            <section className="py-24 md:py-32 bg-[#FAFAFA] border-y border-gray-100">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="text-center max-w-3xl mx-auto mb-20">
+                        <span className="text-[#BA442E] font-bold tracking-[0.3em] uppercase text-sm mb-4 block">Ecosystem</span>
+                        <h2 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight mb-6">Altron e-Campus</h2>
+                        <p className="text-gray-500 text-lg md:text-xl font-light">A 360° holistic approach to integrated security solutions and global standards.</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-8 items-center">
+                        {/* Left Column */}
+                        <div className="flex flex-col gap-12 lg:text-right order-2 lg:order-1">
+                            <div className="group flex flex-col lg:items-end">
+                                <div className="mb-6 p-4 bg-white shadow-sm border border-gray-100 rounded-full text-gray-400 group-hover:text-[#BA442E] group-hover:border-[#BA442E]/30 transition-all duration-300">
+                                    <ShieldCheck strokeWidth={1.5} size={32} />
+                                </div>
+                                <h4 className="text-2xl font-bold text-gray-900 mb-3 tracking-tight">Altron Engineering</h4>
+                                <p className="text-gray-500 leading-relaxed font-light lg:max-w-[280px]">Custom security infrastructure engineered exclusively for elite corporate and government sectors.</p>
+                            </div>
+                            <div className="group flex flex-col lg:items-end">
+                                <div className="mb-6 p-4 bg-white shadow-sm border border-gray-100 rounded-full text-gray-400 group-hover:text-[#BA442E] group-hover:border-[#BA442E]/30 transition-all duration-300">
+                                    <Globe strokeWidth={1.5} size={32} />
+                                </div>
+                                <h4 className="text-2xl font-bold text-gray-900 mb-3 tracking-tight">Altrox World Corp</h4>
+                                <p className="text-gray-500 leading-relaxed font-light lg:max-w-[280px]">Global manufacturing of next-generation, AI-powered surveillance hardware.</p>
+                            </div>
+                        </div>
+
+                        {/* Center Image */}
+                        <div className="relative flex justify-center items-center order-1 lg:order-2 py-10 lg:py-0">
+                            <div className="absolute w-[120%] h-[120%] border-[1px] border-gray-200 rounded-full animate-[spin_40s_linear_infinite]" />
+                            <div className="absolute w-[90%] h-[90%] border-[1px] border-dashed border-[#BA442E]/20 rounded-full animate-[spin_30s_linear_infinite_reverse]" />
+                            <img
+                                src="https://res.cloudinary.com/dq6gr5zjc/image/upload/v1773038587/ChatGPT_Image_Mar_9_2026_12_12_44_PM_prhuf0.png"
+                                alt="Core Technology"
+                                className="relative z-10 w-64 lg:w-full max-w-[360px] drop-shadow-2xl mix-blend-multiply"
+                            />
+                        </div>
+
+                        {/* Right Column */}
+                        <div className="flex flex-col gap-12 order-3">
+                            <div className="group flex flex-col items-start">
+                                <div className="mb-6 p-4 bg-white shadow-sm border border-gray-100 rounded-full text-gray-400 group-hover:text-[#BA442E] group-hover:border-[#BA442E]/30 transition-all duration-300">
+                                    <GraduationCap strokeWidth={1.5} size={32} />
+                                </div>
+                                <h4 className="text-2xl font-bold text-gray-900 mb-3 tracking-tight">Altron Institute</h4>
+                                <p className="text-gray-500 leading-relaxed font-light lg:max-w-[280px]">Elite vocational training and international certifications in safety technologies.</p>
+                            </div>
+                            <div className="group flex flex-col items-start">
+                                <div className="mb-6 p-4 bg-white shadow-sm border border-gray-100 rounded-full text-gray-400 group-hover:text-[#BA442E] group-hover:border-[#BA442E]/30 transition-all duration-300">
+                                    <Settings strokeWidth={1.5} size={32} />
+                                </div>
+                                <h4 className="text-2xl font-bold text-gray-900 mb-3 tracking-tight">Altron Care</h4>
+                                <p className="text-gray-500 leading-relaxed font-light lg:max-w-[280px]">Dedicated post-installation maintenance and premium white-glove technical support.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* --- GALLERY --- */}
+            <section className="py-24 md:py-32 bg-white">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                        <div className="max-w-2xl">
+                            <span className="text-[#BA442E] font-bold tracking-[0.3em] uppercase text-sm mb-4 block">Facilities</span>
+                            <h2 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight">Hands-on Training.</h2>
+                        </div>
+                        <button className="text-gray-900 font-bold hover:text-[#BA442E] transition-colors flex items-center gap-2">
+                            View Full Gallery <ArrowRight className="w-4 h-4" />
+                        </button>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        {GALLERY_IMAGES.map((img, index) => (
+                            <div key={index} className="group relative overflow-hidden bg-black aspect-[4/5]">
+                                <img
+                                    src={img}
+                                    alt={`Training Session ${index + 1}`}
+                                    className="w-full h-full object-cover opacity-90 transition-all duration-700 group-hover:scale-110 group-hover:opacity-100"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+                                    <span className="text-[#BA442E] font-bold text-xs uppercase tracking-widest mb-2">Module 0{index + 1}</span>
+                                    <h3 className="text-white text-xl font-bold">Practical Session</h3>
+                                </div>
+                            </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            <div className="bg-[#FFFFFF] py-20">
-                <div className="w-full bg-white py-12 px-4 md:px-10 lg:px-20">
-                    <div className="max-w-7xl mx-auto flex flex-col md:flex-row min-h-[600px] border border-gray-100 shadow-sm overflow-hidden rounded-xl">
-                        <div className="flex-1 w-full h-[400px] md:h-auto relative">
-                            <img src="https://res.cloudinary.com/dq6gr5zjc/image/upload/v1773034527/ChatGPT_Image_Mar_9_2026_11_05_10_AM_t6b58i.png" alt="Altron Institute Security" className="w-full h-full object-cover" />
-                        </div>
-                        <div className="flex-1 px-8 py-16 md:px-12 lg:px-16 flex flex-col items-center justify-center text-center">
-                            <h2 className="text-[#b3433a] text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-2 max-w-2xl">Altron Institute of Safety and Security Technologies</h2>
-                            <h3 className="text-[#b3433a] text-2xl md:text-3xl font-bold tracking-[0.2em] mb-8">ACADEMY</h3>
-                            <p className="text-gray-600 text-lg md:text-xl leading-relaxed max-w-2xl mb-12">Altron Institute is expertise in making the world use the latest technologies to have safe and secure surveillance.</p>
-                            <button className="px-10 py-3 border-2 border-[#b3433a] text-[#b3433a] text-xl font-medium rounded-sm hover:bg-[#b3433a] hover:text-white transition-all duration-300 active:scale-95">Read More</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="flex flex-col items-center justify-center py-20 px-4 bg-white">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-semibold text-gray-900 mb-4">Altron e Campus</h2>
-                        <p className="text-gray-500 text-lg">Our comprehensive ecosystem for safety and security</p>
-                    </div>
-
-                    <div className="relative flex flex-col md:flex-row items-center justify-center max-w-7xl w-full gap-12">
-                        <div className="flex-1 flex flex-col gap-20 text-right">
-                            <div className="flex flex-col items-end">
-                                <div className="mb-4 text-3xl text-gray-700">
-                                    <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-                                </div>
-                                <h4 className="text-xl font-bold text-gray-800 mb-2">Altron Security Engineering PVT LTD</h4>
-                                <p className="text-gray-500 text-sm max-w-[250px]">Safety and Security Integration Solutions focused on large-scale infrastructure.</p>
-                            </div>
-                            <div className="flex flex-col items-end">
-                                <div className="mb-4 text-3xl text-gray-700">
-                                    <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
-                                </div>
-                                <h4 className="text-xl font-bold text-gray-800 mb-2">Altrox World Corp</h4>
-                                <p className="text-gray-500 text-sm max-w-[250px]">Global CCTV Surveillance System Manufacturer delivering cutting-edge hardware.</p>
-                            </div>
-                        </div>
-
-                        <div className="relative flex-1 flex justify-center items-center py-10">
-                            <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
-                                <div className="w-[300px] h-[300px] border border-gray-100 rounded-full absolute"></div>
-                                <div className="w-[450px] h-[450px] border border-gray-50 rounded-full absolute"></div>
-                            </div>
-                            <img src="https://res.cloudinary.com/dq6gr5zjc/image/upload/v1773038587/ChatGPT_Image_Mar_9_2026_12_12_44_PM_prhuf0.png" alt="Core Surveillance Camera" className="relative z-10 w-full max-w-[350px] h-auto drop-shadow-2xl" />
-                        </div>
-
-                        <div className="flex-1 flex flex-col gap-20 text-left">
-                            <div className="flex flex-col items-start">
-                                <div className="mb-4 text-3xl text-gray-700">
-                                    <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 14l9-5-9-5-9 5 9 5z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" /></svg>
-                                </div>
-                                <h4 className="text-xl font-bold text-gray-800 mb-2">Altron Institute</h4>
-                                <p className="text-gray-500 text-sm max-w-[250px]">Safety & Security Education Institute providing professional training.</p>
-                            </div>
-                            <div className="flex flex-col items-start">
-                                <div className="mb-4 text-3xl text-gray-700">
-                                    <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                                </div>
-                                <h4 className="text-xl font-bold text-gray-800 mb-2">Altron Care Service</h4>
-                                <p className="text-gray-500 text-sm max-w-[250px]">Multi-brand CCTV Surveillance Service Centre providing maintenance.</p>
-                            </div>
+            {/* --- CONTACT SECTION --- */}
+            <section className="py-0 bg-white">
+                <div className="w-full flex flex-col lg:flex-row border-y border-gray-100">
+                    <div className="w-full lg:w-1/2 relative min-h-[500px] lg:min-h-0 bg-black">
+                        <video
+                            src="https://res.cloudinary.com/dq6gr5zjc/video/upload/v1773051052/animated_kfaqwb.mov"
+                            autoPlay loop muted playsInline
+                            className="absolute inset-0 w-full h-full object-cover opacity-60"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center p-12 lg:p-24">
+                            <h2 className="text-5xl lg:text-7xl font-black text-white leading-tight">
+                                Secure Your<br /><span className="text-[#BA442E]">Future.</span>
+                            </h2>
                         </div>
                     </div>
+                    <div className="w-full lg:w-1/2 bg-white p-12 lg:p-24 flex flex-col justify-center">
+                        <div className="max-w-lg w-full mx-auto lg:mx-0">
+                            <span className="text-[#BA442E] font-bold tracking-[0.3em] uppercase text-sm mb-4 block">Inquiry</span>
+                            <h3 className="text-3xl font-black text-gray-900 mb-10 tracking-tight">Ready to begin?</h3>
 
-                    <div className="bg-white py-24 px-6 md:px-12 lg:px-24 w-full">
-                        <div className="text-center mb-16">
-                            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">Our Gallery</h2>
-                            <p className="text-gray-500 text-lg mb-6">Glimpses of our hands-on technical training sessions</p>
-                            <div className="h-1 w-20 bg-[#BA442E] mx-auto rounded-full"></div>
-                        </div>
-
-                        <div className="max-w-[1800px] mx-auto w-full">
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-                                {GALLERY_IMAGES.map((img, index) => (
-                                    <div key={index} className="group relative overflow-hidden rounded-2xl bg-gray-50 shadow-sm transition-all duration-700 hover:shadow-2xl border border-gray-100 cursor-pointer">
-                                        <div className="aspect-[16/10] md:aspect-[4/3] overflow-hidden">
-                                            <img src={img} alt={`Training ${index}`} className="h-full w-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110" />
-                                        </div>
-                                        <div className="absolute inset-0 bg-gradient-to-t from-[#1F1F1F]/90 via-[#1F1F1F]/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8">
-                                            <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                                                <span className="inline-block px-3 py-1 bg-[#BA442E] text-white text-xs font-bold uppercase tracking-wider rounded-sm mb-3">Training Session</span>
-                                                <h4 className="text-white font-bold text-2xl mb-1">Practical Lab</h4>
-                                                <p className="text-gray-300 text-sm font-medium">Altron Institute</p>
-                                            </div>
-                                        </div>
+                            <form className="space-y-8">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                    <div className="relative group">
+                                        <User className="absolute left-0 top-3 text-gray-400 w-5 h-5 transition-colors group-focus-within:text-[#BA442E]" />
+                                        <input type="text" placeholder="Full Name" className="w-full pl-8 pr-4 py-3 bg-transparent border-b border-gray-300 focus:border-[#BA442E] outline-none text-gray-900 placeholder-gray-400 transition-colors" />
                                     </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6 md:p-12 lg:p-20 w-full">
-                        <div className="max-w-7xl w-full bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row">
-                            <div className="w-full md:w-1/2 flex items-center justify-center overflow-hidden">
-                                <video src="https://res.cloudinary.com/dq6gr5zjc/video/upload/v1773051052/animated_kfaqwb.mov" autoPlay loop muted playsInline className="w-full h-full object-cover" />
-                            </div>
-                            <div className="w-full md:w-1/2 p-12 md:p-20">
-                                <form className="space-y-6">
-                                    <div>
-                                        <label className="block text-sm font-semibold text-gray-700 mb-2">Name</label>
-                                        <input type="text" className="w-full px-4 py-3 rounded-lg bg-gray-100 border-transparent focus:border-[#BA442E] focus:bg-white focus:ring-0 transition duration-200" placeholder="John Doe" />
+                                    <div className="relative group">
+                                        <Phone className="absolute left-0 top-3 text-gray-400 w-5 h-5 transition-colors group-focus-within:text-[#BA442E]" />
+                                        <input type="tel" placeholder="Mobile Number" className="w-full pl-8 pr-4 py-3 bg-transparent border-b border-gray-300 focus:border-[#BA442E] outline-none text-gray-900 placeholder-gray-400 transition-colors" />
                                     </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold text-gray-700 mb-2">Phone</label>
-                                        <input type="tel" className="w-full px-4 py-3 rounded-lg bg-gray-100 border-transparent focus:border-[#BA442E] focus:bg-white focus:ring-0 transition duration-200" placeholder="+91 00000 00000" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold text-gray-700 mb-2">Email</label>
-                                        <input type="email" className="w-full px-4 py-3 rounded-lg bg-gray-100 border-transparent focus:border-[#BA442E] focus:bg-white focus:ring-0 transition duration-200" placeholder="john@example.com" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold text-gray-700 mb-2">Message</label>
-                                        <textarea rows={4} className="w-full px-4 py-3 rounded-lg bg-gray-100 border-transparent focus:border-[#BA442E] focus:bg-white focus:ring-0 transition duration-200 resize-none" placeholder="How can we help you?"></textarea>
-                                    </div>
-                                    <button type="submit" className="w-full md:w-max px-12 py-4 bg-[#BA442E] text-white font-bold rounded-lg hover:bg-[#a13a27] transform hover:-translate-y-1 transition-all duration-200 shadow-md">
-                                        Submit
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* --- UPDATED TESTIMONIALS VIDEOS SECTION --- */}
-                    <div className="bg-white py-24 px-6 md:px-12 lg:px-24 w-full">
-                        <div className="max-w-7xl mx-auto">
-                            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-                                <div>
-                                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">Testimonials — <span className="text-[#BA442E]">Videos</span></h2>
-                                    <p className="text-gray-500 text-lg">Hear what our successful students and partners have to say</p>
                                 </div>
-                                <button className="text-sm font-bold uppercase tracking-widest text-[#BA442E] border-b-2 border-[#BA442E] pb-1 hover:text-black hover:border-black transition-colors">
-                                    View All Stories
+                                <div className="relative group">
+                                    <Mail className="absolute left-0 top-3 text-gray-400 w-5 h-5 transition-colors group-focus-within:text-[#BA442E]" />
+                                    <input type="email" placeholder="Email Address" className="w-full pl-8 pr-4 py-3 bg-transparent border-b border-gray-300 focus:border-[#BA442E] outline-none text-gray-900 placeholder-gray-400 transition-colors" />
+                                </div>
+                                <div className="relative group">
+                                    <textarea rows={3} placeholder="Tell us about your requirements..." className="w-full py-3 bg-transparent border-b border-gray-300 focus:border-[#BA442E] outline-none text-gray-900 placeholder-gray-400 resize-none transition-colors" />
+                                </div>
+                                <button className="w-full bg-[#BA442E] text-white py-5 font-bold tracking-widest uppercase text-sm hover:bg-black transition-colors duration-300 mt-4">
+                                    Send Inquiry
                                 </button>
-                            </div>
-
-                            {/* Redesigned Video Layout based on screenshot */}
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-                                {/* Featured Large Video */}
-                                <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl group">
-                                    <iframe
-                                        src={TESTIMONIALS[0].videoUrl}
-                                        title={TESTIMONIALS[0].title}
-                                        className="w-full h-full border-0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                    />
-                                    <div className="absolute top-4 right-4 flex gap-2">
-                                        <button className="p-2 bg-black/50 backdrop-blur-md rounded-full text-white hover:bg-[#BA442E] transition-colors">
-                                            <ChevronLeft className="w-4 h-4" />
-                                        </button>
-                                        <button className="p-2 bg-black/50 backdrop-blur-md rounded-full text-white hover:bg-[#BA442E] transition-colors">
-                                            <ChevronRight className="w-4 h-4" />
-                                        </button>
-                                    </div>
-                                </div>
-
-                                {/* Secondary Video Grid */}
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
-                                    {TESTIMONIALS.slice(1).map((item) => (
-                                        <div key={item.id} className="flex flex-col gap-4">
-                                            <div className="relative aspect-video rounded-xl overflow-hidden shadow-md group">
-                                                <iframe
-                                                    src={item.videoUrl}
-                                                    title={item.title}
-                                                    className="w-full h-full border-0"
-                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                    allowFullScreen
-                                                />
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
-
                 </div>
-            </div>
+            </section>
+
+            {/* --- VIDEO TESTIMONIALS --- */}
+            <section className="bg-[#0A0A0A] py-24 md:py-32">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="mb-16">
+                        <span className="text-[#BA442E] font-bold tracking-[0.3em] uppercase text-sm mb-4 block">Success Stories</span>
+                        <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">Hear from our alumni.</h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                        {/* Main Featured Video */}
+                        <div className="lg:col-span-8">
+                            <div className="aspect-video w-full bg-black relative group overflow-hidden border border-white/10">
+                                <iframe src={TESTIMONIALS[0].videoUrl} className="absolute inset-0 w-full h-full" allowFullScreen title="Featured Video" />
+                            </div>
+                        </div>
+
+                        {/* Playlist */}
+                        <div className="lg:col-span-4 flex flex-col gap-6">
+                            {TESTIMONIALS.slice(1).map((video, idx) => (
+                                <div key={video.id} className="group cursor-pointer flex flex-col sm:flex-row lg:flex-col gap-4">
+                                    <div className="w-full sm:w-48 lg:w-full aspect-video bg-black relative overflow-hidden border border-white/5 transition-all duration-300 group-hover:border-[#BA442E]/50">
+                                        <iframe src={video.videoUrl} className="absolute inset-0 w-full h-full pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity" title={video.title} />
+                                    </div>
+                                    <div className="flex-1 flex flex-col justify-center">
+                                        <span className="text-[#BA442E] text-xs font-bold tracking-widest uppercase mb-1 block">Episode 0{idx + 2}</span>
+                                        <h4 className="text-white font-medium text-sm md:text-base leading-snug group-hover:text-[#BA442E] transition-colors">{video.title}</h4>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* --- GOOGLE REVIEWS SECTION --- */}
+            <section className="bg-[#FAFAFA] py-24 md:py-32">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-8">
+                        <div>
+                            <span className="text-[#BA442E] font-bold tracking-[0.3em] uppercase text-sm mb-4 block">Testimonials</span>
+                            <h2 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight mb-4">Verified Excellence.</h2>
+                            <div className="flex items-center gap-4">
+                                <div className="flex text-yellow-400">
+                                    {[...Array(5)].map((_, i) => <Star key={i} size={24} fill="currentColor" strokeWidth={0} />)}
+                                </div>
+                                <span className="font-bold text-xl text-gray-900">4.9/5.0 <span className="text-gray-400 font-normal text-base ml-2">on Google</span></span>
+                            </div>
+                        </div>
+                        <a href="#" className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white border border-gray-200 text-gray-900 font-bold hover:border-[#BA442E] transition-colors duration-300">
+                            <img src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png" alt="Google" className="w-5 h-5" />
+                            Leave a Review
+                        </a>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {GOOGLE_REVIEWS.map((review) => (
+                            <div key={review.id} className="bg-white p-10 border border-gray-100 flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                                <div className="flex text-yellow-400 mb-8">
+                                    {[...Array(review.rating)].map((_, i) => <Star key={i} size={18} fill="currentColor" strokeWidth={0} />)}
+                                </div>
+                                <p className="text-gray-600 leading-relaxed text-lg flex-grow font-light mb-10">
+                                    "{review.text}"
+                                </p>
+                                <div className="mt-auto flex items-center gap-4">
+                                    <div className="w-12 h-12 bg-gray-100 flex items-center justify-center text-[#BA442E] font-black text-lg">
+                                        {review.avatar}
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold text-gray-900 text-sm">{review.author}</h4>
+                                        <p className="text-xs text-gray-400 uppercase tracking-widest mt-1">{review.date}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
         </div>
     );
 }

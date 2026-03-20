@@ -54,7 +54,7 @@ const courses = [
 
 export default function FeesEligibility() {
     return (
-        <div>
+        <div className="bg-gradient-to-b from-white to-gray-50">
 
             <PageHero
                 title="CCTV Installation & Maintenance Training"
@@ -64,8 +64,8 @@ export default function FeesEligibility() {
 
             <div className="max-w-7xl mx-auto px-4 py-20">
 
-                {/* COURSE INTRO */}
-                <div className="mb-16 max-w-4xl mx-auto text-black leading-relaxed space-y-5">
+                {/* INTRO */}
+                <div className="mb-20 max-w-4xl mx-auto text-black leading-relaxed space-y-6 text-[15px]">
 
                     <p>
                         Altron Institute of Safety & Security Practical Training understands the industry
@@ -100,30 +100,34 @@ export default function FeesEligibility() {
                 </div>
 
 
-                {/* COURSE CARDS */}
-                <div className="space-y-8 mb-16">
+                {/* CARDS */}
+                <div className="space-y-10 mb-20">
 
                     {courses.map((course, i) => (
 
                         <div
                             key={i}
-                            className={`bg-white rounded-2xl border ${course.borderColor} shadow-lg hover:shadow-2xl transition-all duration-300`}
+                            className={`group bg-white/80 backdrop-blur rounded-2xl border ${course.borderColor} shadow-md hover:shadow-xl transition duration-300`}
                         >
 
-                            <div className={`h-1 bg-gradient-to-r ${course.color}`} />
+                            {/* TOP GRADIENT BAR */}
+                            <div className={`h-1.5 bg-gradient-to-r ${course.color} rounded-t-2xl`} />
 
                             <div className="p-8">
 
-                                <div className="flex items-start gap-4 mb-6">
+                                {/* HEADER */}
+                                <div className="flex items-center gap-4 mb-8">
 
-                                    <div className="text-4xl">{course.icon}</div>
+                                    <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-gray-100 text-2xl shadow-sm group-hover:scale-105 transition">
+                                        {course.icon}
+                                    </div>
 
                                     <div>
-                                        <h2 className="text-xl font-bold text-black">
+                                        <h2 className="text-xl font-semibold text-black tracking-tight">
                                             {course.title}
                                         </h2>
 
-                                        <p className={`text-sm font-semibold ${course.accentColor}`}>
+                                        <p className={`text-xs font-semibold ${course.accentColor}`}>
                                             Practical Training Program
                                         </p>
                                     </div>
@@ -131,17 +135,18 @@ export default function FeesEligibility() {
                                 </div>
 
 
-                                <div className="overflow-x-auto">
+                                {/* TABLE */}
+                                <div className="overflow-hidden rounded-xl border border-gray-100">
 
                                     <table className="w-full">
 
-                                        <thead>
-                                            <tr className="border-b border-gray-200">
-                                                <th className="text-left py-3 px-4 text-gray-600 text-sm font-medium">
+                                        <thead className="bg-gray-50">
+                                            <tr>
+                                                <th className="text-left py-3 px-5 text-gray-500 text-xs uppercase tracking-wide">
                                                     Criteria
                                                 </th>
 
-                                                <th className="text-left py-3 px-4 text-gray-600 text-sm font-medium">
+                                                <th className="text-left py-3 px-5 text-gray-500 text-xs uppercase tracking-wide">
                                                     Details
                                                 </th>
                                             </tr>
@@ -153,14 +158,14 @@ export default function FeesEligibility() {
 
                                                 <tr
                                                     key={j}
-                                                    className="border-b border-gray-100 hover:bg-gray-50 transition"
+                                                    className="border-t border-gray-100 hover:bg-gray-50/60 transition"
                                                 >
 
-                                                    <td className="py-3 px-4 text-gray-700 text-sm">
+                                                    <td className="py-3 px-5 text-gray-600 text-sm">
                                                         {row.label}
                                                     </td>
 
-                                                    <td className={`py-3 px-4 font-semibold text-sm ${course.accentColor}`}>
+                                                    <td className={`py-3 px-5 font-semibold text-sm ${course.accentColor}`}>
                                                         {row.value}
                                                     </td>
 
@@ -175,11 +180,12 @@ export default function FeesEligibility() {
                                 </div>
 
 
-                                <div className="mt-6 flex gap-4">
+                                {/* BUTTONS */}
+                                <div className="mt-8 flex gap-4">
 
                                     <Link
                                         to="/contact"
-                                        className="bg-red-600 hover:bg-red-700 text-white px-6 py-2.5 rounded-lg text-sm font-semibold"
+                                        className="bg-red-600 hover:bg-red-700 text-white px-6 py-2.5 rounded-lg text-sm font-semibold shadow-sm hover:shadow-md transition"
                                     >
                                         Enquire for Fees
                                     </Link>
@@ -202,16 +208,14 @@ export default function FeesEligibility() {
                 </div>
 
 
+                {/* PLACEMENT */}
+                <div className="bg-white/80 backdrop-blur rounded-2xl p-12 border border-red-200 shadow-md text-center">
 
-                {/* Placement Section */}
-
-                <div className="bg-white rounded-2xl p-10 border border-red-200 shadow-lg text-center">
-
-                    <h3 className="text-black font-bold text-xl mb-4">
+                    <h3 className="text-black font-semibold text-xl mb-4 tracking-tight">
                         Placement Opportunities
                     </h3>
 
-                    <p className="text-gray-700 max-w-2xl mx-auto mb-6">
+                    <p className="text-gray-700 max-w-2xl mx-auto mb-8 text-[15px] leading-relaxed">
                         Our training bridges the gap between students and corporate companies.
                         After successful completion of the Professional Course,
                         students receive <strong className="text-red-600"> 100% placement assistance</strong>
@@ -222,14 +226,14 @@ export default function FeesEligibility() {
 
                         <a
                             href="tel:+919962456533"
-                            className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold"
+                            className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold shadow-sm hover:shadow-md transition"
                         >
                             Call: 99624 56533
                         </a>
 
                         <Link
                             to="/contact"
-                            className="border border-gray-300 hover:border-red-600 hover:text-red-600 px-6 py-3 rounded-lg font-semibold"
+                            className="border border-gray-300 hover:border-red-600 hover:text-red-600 px-6 py-3 rounded-lg font-semibold transition"
                         >
                             Send Enquiry
                         </Link>
